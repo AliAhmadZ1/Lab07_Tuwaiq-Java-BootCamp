@@ -58,5 +58,31 @@ public class StudentService {
         return false;
     }
 
+    public boolean graduate(String id){
+        for (Student s: students){
+            if (s.getId().equals(id)) {
+                if (s.getNumberOfRequiredCourses() == s.getNumberOfCoursesPassing()) {
+                    s.setStatus("graduated");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean clearance(String id){
+        for (Student s: students){
+            if (s.getId().equals(id)) {
+                if (s.getNumberOfRequiredCourses() == s.getNumberOfCoursesPassing()) {
+                    s.setStatus("graduated");
+                    return true;
+                }
+                s.setNumberOfRequiredCourses(s.getNumberOfCoursesPassing());
+                s.setStatus("withdrawn");
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

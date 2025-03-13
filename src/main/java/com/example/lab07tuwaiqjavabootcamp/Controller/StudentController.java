@@ -60,8 +60,20 @@ public class StudentController {
         return ResponseEntity.status(400).body(new ApiResponse("Not found or number of courses are exceeding the required"));
     }
 
+    @PutMapping ("/graduate/{id}")
+    public ResponseEntity graduate(@PathVariable String id){
+        if (studentService.graduate(id)){
+            return ResponseEntity.status(200).body(new ApiResponse("Congratulation you are graduated!!"));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Not found or didn't complete all required courses."));
+    }
 
-
-
+    @PutMapping("/clearance/{id}")
+    public ResponseEntity clearance(@PathVariable String id){
+        if (studentService.clearance(id)){
+            return ResponseEntity.status(200).body(new ApiResponse("the clearance process finish"));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Not found"));
+    }
 
 }
