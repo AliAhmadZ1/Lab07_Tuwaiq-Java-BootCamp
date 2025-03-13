@@ -52,4 +52,12 @@ public class TeacherController {
             return ResponseEntity.status(200).body(new ApiResponse("teacher is deleted"));
         return ResponseEntity.status(400).body(new ApiResponse("Not found"));
     }
+
+    @PutMapping("/bonus/{id},{percent}")
+    public ResponseEntity salaryBonus(@PathVariable String id,@PathVariable double percent){
+        if (teacherService.salaryBonus(id, percent)){
+            return ResponseEntity.status(200).body(new ApiResponse("you have get "+percent+"% bonus"));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Not found or Bonus doesn't allowed"));
+    }
 }

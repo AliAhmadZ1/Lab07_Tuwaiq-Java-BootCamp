@@ -42,4 +42,16 @@ public class TeacherService {
         }
         return false;
     }
+
+    public boolean salaryBonus(String id,double percent){
+        for (Teacher t:teachers){
+            if (t.getId().equals(id)&&percent<=25){
+                double totalBonus = percent*t.getHours();
+                t.setSalary(t.getSalary()+totalBonus);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
