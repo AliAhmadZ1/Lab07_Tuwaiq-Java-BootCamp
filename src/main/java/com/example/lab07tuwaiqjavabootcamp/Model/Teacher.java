@@ -30,6 +30,9 @@ public class Teacher {
     @Min(value = 6,message = "minimum hours is 6h/week")
     @Max(value = 20,message = "maximum hours is 20h/week")
     private int hours;
+    @NotNull(message = "shouldn't be null")
+    @PositiveOrZero(message = "salary cannot be negative")
+    private double salary;
     @NotEmpty(message = "Shouldn't be empty")
     @Email
     private String email;
