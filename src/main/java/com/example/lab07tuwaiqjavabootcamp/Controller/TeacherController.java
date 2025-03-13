@@ -60,4 +60,13 @@ public class TeacherController {
         }
         return ResponseEntity.status(400).body(new ApiResponse("Not found or Bonus doesn't allowed"));
     }
+
+    @PutMapping("/special/{id}")
+    public ResponseEntity salarySpecialBonus(@PathVariable String id){
+        if (teacherService.salarySpecialBonus(id)){
+            return ResponseEntity.status(200).body(new ApiResponse("You've got 7.5% bonus"));
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("Not Found or not compatible"));
+    }
+
 }

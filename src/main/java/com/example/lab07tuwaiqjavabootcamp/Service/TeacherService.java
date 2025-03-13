@@ -54,4 +54,17 @@ public class TeacherService {
         return false;
     }
 
+    public boolean salarySpecialBonus(String id){
+        for (Teacher t: teachers){
+            if (t.getId().equals(id)){
+                if (t.getAge()>=50){
+                    double bonus = t.getSalary()*0.075;
+                    t.setSalary(t.getSalary()+bonus);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
